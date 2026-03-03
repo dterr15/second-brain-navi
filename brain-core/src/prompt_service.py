@@ -5,18 +5,32 @@ MASTER_PROMPT_TEMPLATE = """Eres un analista de conocimiento para mi Second Brai
 
 Tarea:
 1) Lee el CONTENIDO.
-2) Extrae y normaliza: titulo, resumen, tags, areas de conocimiento,
-   prioridad (1-5), acciones, entidades.
+2) Extrae y normaliza la informacion.
 3) Genera un refined_markdown limpio y reutilizable (sin relleno).
-4) Devuelve SOLO JSON valido (sin explicacion, sin markdown fuera
-   del campo refined_markdown).
+4) Devuelve SOLO el siguiente JSON valido, sin texto antes ni despues.
+
+El JSON debe tener EXACTAMENTE estas keys en ingles:
+
+{{
+  "title": "titulo descriptivo (max 180 chars)",
+  "summary": "resumen ejecutivo en espanol (max 2000 chars)",
+  "refined_markdown": "contenido estructurado en markdown (max 40000 chars)",
+  "tags": ["tag1", "tag2"],
+  "knowledge_areas": ["area1", "area2"],
+  "priority": 3,
+  "actions": [{{"type": "read|research|implement|review", "text": "descripcion"}}],
+  "entities": [{{"type": "person|org|concept|tool|place", "value": "nombre"}}],
+  "sources": [{{"kind": "text|url|pdf|audio|image|note", "value": "referencia"}}],
+  "confidence": 0.85
+}}
 
 Reglas:
-- Si faltan datos, usa null o listas vacias (no inventes).
-- Prioridad: 5=urgente/impacto alto, 3=util, 1=archivo/referencia.
-- confidence 0.0-1.0 segun claridad del contenido.
-- Manten el texto en espanol.
-- No incluyas texto fuera del JSON. Ni antes ni despues.
+- Usa EXACTAMENTE los nombres de campo en ingles como aparecen arriba.
+- Si faltan datos usa null o listas vacias, nunca inventes.
+- priority: 5=urgente/impacto alto, 3=util, 1=archivo/referencia.
+- confidence: 0.0-1.0 segun claridad del contenido.
+- Manten el texto de los valores en espanol.
+- Sin texto fuera del JSON. Ni antes ni despues.
 
 CONTENIDO:
 <<<
