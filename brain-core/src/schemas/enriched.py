@@ -19,7 +19,7 @@ class EntityItem(BaseModel):
     value: str = Field(..., min_length=1, max_length=120)
 
 class SourceItem(BaseModel):
-    type: str = Field(..., min_length=1, max_length=50)
+    kind: str = Field(..., min_length=1, max_length=50)
     value: str = Field(..., min_length=1, max_length=2000)
 
 

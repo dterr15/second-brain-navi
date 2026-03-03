@@ -11,7 +11,7 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./db/migrations/versions/V001__init.sql:/docker-entrypoint-initdb.d/V001__init.sql
+      - ./db/migrations/V001__init.sql:/docker-entrypoint-initdb.d/V001__init.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U brain -d secondbrain"]
       interval: 5s
@@ -26,7 +26,7 @@ services:
       SB_DATABASE_URL: postgresql+asyncpg://brain:brain@db:5432/secondbrain
       SB_DATABASE_URL_SYNC: postgresql://brain:brain@db:5432/secondbrain
       SB_DEBUG: "true"
-      SB_CORS_ORIGINS: '["http://localhost:3000","http://localhost:5173"]'
+      SB_CORS_ORIGINS: '["http://localhost:3000","http://localhost:5173","http://localhost:8080","http://127.0.0.1:8080"]'
       SB_ENRICHED_SCHEMA_PATH: /app/schemas/enriched_contract.schema.json
     ports:
       - "8000:8000"

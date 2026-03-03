@@ -60,7 +60,7 @@ class Asset(Base):
     __tablename__ = "assets"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    type = Column(SAEnum(AssetType, name="asset_type", create_type=False), nullable=False, default=AssetType.text)
+    type = Column(String, nullable=False, default="text")
     title = Column(Text)
     raw_payload = Column(Text)
     raw_storage_path = Column(Text)
@@ -73,7 +73,7 @@ class Asset(Base):
     confidence_score = Column(Float)
     verified_by_human = Column(Boolean, nullable=False, default=False)
     verified_at = Column(DateTime(timezone=True))
-    status = Column(SAEnum(AssetStatus, name="asset_status", create_type=False), nullable=False, default=AssetStatus.ingested)
+    status = Column(String, nullable=False, default="ingested")
     metadata_ = Column("metadata", JSONB, default=dict)
     model_used = Column(Text)
     created_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)
