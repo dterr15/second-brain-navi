@@ -1,0 +1,60 @@
+{
+  "title": "Estrategias de inversión en mercados emergentes 2025",
+  "summary": "Análisis de las principales estrategias de inversión para mercados emergentes, incluyendo diversificación geográfica, gestión de riesgo cambiario y sectores con mayor potencial de crecimiento.",
+  "refined_markdown": "# Estrategias de Inversión en Mercados Emergentes 2025\\n\\n## Contexto\\n\\nLos mercados emergentes presentan oportunidades significativas para 2025, impulsados por la recuperación post-pandemia y la transformación digital.\\n\\n## Estrategias Clave\\n\\n### 1. Diversificación Geográfica\\n- India y Vietnam como mercados prioritarios\\n- Reducir exposición a China continental\\n\\n### 2. Gestión de Riesgo Cambiario\\n- Coberturas naturales mediante ingresos locales\\n- Uso selectivo de forwards\\n\\n### 3. Sectores Prioritarios\\n- Tecnología financiera (fintech)\\n- Energías renovables\\n- Infraestructura digital\\n\\n## Conclusión\\n\\nLa clave está en combinar diversificación con gestión activa de riesgo.",
+  "tags": [
+    "inversión",
+    "mercados-emergentes",
+    "finanzas",
+    "estrategia",
+    "2025"
+  ],
+  "knowledge_areas": [
+    "Finanzas",
+    "Inversiones"
+  ],
+  "priority": 4,
+  "actions": [
+    {
+      "type": "todo",
+      "text": "Revisar exposición actual a mercados emergentes en el portafolio"
+    },
+    {
+      "type": "read",
+      "text": "Leer informe del FMI sobre perspectivas de mercados emergentes 2025"
+    },
+    {
+      "type": "calendar",
+      "text": "Agendar revisión trimestral de posiciones EM"
+    }
+  ],
+  "entities": [
+    {
+      "type": "concept",
+      "value": "Mercados Emergentes"
+    },
+    {
+      "type": "place",
+      "value": "India"
+    },
+    {
+      "type": "place",
+      "value": "Vietnam"
+    },
+    {
+      "type": "concept",
+      "value": "Fintech"
+    },
+    {
+      "type": "org",
+      "value": "FMI"
+    }
+  ],
+  "sources": [
+    {
+      "kind": "note",
+      "value": "Notas personales de webinar sobre EM Q4 2024"
+    }
+  ],
+  "confidence": 0.85
+}

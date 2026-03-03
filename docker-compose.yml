@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: brain
+      POSTGRES_PASSWORD: brain
+      POSTGRES_DB: secondbrain
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/migrations/versions/V001__init.sql:/docker-entrypoint-initdb.d/V001__init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U brain -d secondbrain"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  brain-core:
+    build:
+      context: .
+      dockerfile: brain-core/Dockerfile
+    environment:
+      SB_DATABASE_URL: postgresql+asyncpg://brain:brain@db:5432/secondbrain
+      SB_DATABASE_URL_SYNC: postgresql://brain:brain@db:5432/secondbrain
+      SB_DEBUG: "true"
+      SB_CORS_ORIGINS: '["http://localhost:3000","http://localhost:5173"]'
+      SB_ENRICHED_SCHEMA_PATH: /app/schemas/enriched_contract.schema.json
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./brain-core/src:/app/src
+      - ./schemas:/app/schemas
+      - ./skills:/app/skills
+      - ./storage:/app/storage
+
+volumes:
+  pgdata:

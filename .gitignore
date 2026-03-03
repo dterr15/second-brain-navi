@@ -1,0 +1,30 @@
+# Secrets
+.env
+
+# DB volume
+/data/
+
+# File storage
+/storage/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+
+# Node (si Lovable exporta)
+node_modules/
+dist/
+.next/
+
+# ML models
+/brain-core/models/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude artifacts
+/mnt/

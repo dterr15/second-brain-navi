@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://secondbrain.local/schemas/enriched_contract.schema.json",
+  "title": "Second Brain Enriched Contract",
+  "description": "Schema for JSON output returned by Claude during asset enrichment.",
+  "type": "object",
+  "required": [
+    "title",
+    "summary",
+    "refined_markdown",
+    "tags",
+    "knowledge_areas",
+    "priority",
+    "actions",
+    "entities",
+    "sources",
+    "confidence"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "refined_markdown": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40000
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 40
+      },
+      "maxItems": 30
+    },
+    "knowledge_areas": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 80
+      },
+      "maxItems": 20
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "text"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "todo",
+              "calendar",
+              "read",
+              "buy",
+              "idea"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        }
+      }
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "value"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "person",
+              "org",
+              "tool",
+              "concept",
+              "place"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "value"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "url",
+              "pdf",
+              "note",
+              "audio",
+              "image"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        }
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    }
+  }
+}
