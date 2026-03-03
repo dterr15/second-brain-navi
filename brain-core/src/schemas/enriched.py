@@ -15,11 +15,11 @@ class ActionItem(BaseModel):
     text: str = Field(..., min_length=1, max_length=300)
 
 class EntityItem(BaseModel):
-    type: str = Field(..., pattern="^(person|org|tool|concept|place)$")
+    type: str = Field(..., min_length=1, max_length=50)
     value: str = Field(..., min_length=1, max_length=120)
 
 class SourceItem(BaseModel):
-    kind: str = Field(..., pattern="^(url|pdf|note|audio|image)$")
+    type: str = Field(..., min_length=1, max_length=50)
     value: str = Field(..., min_length=1, max_length=2000)
 
 
