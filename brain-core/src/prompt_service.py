@@ -18,9 +18,9 @@ El JSON debe tener EXACTAMENTE estas keys en ingles:
   "tags": ["tag1", "tag2"],
   "knowledge_areas": ["area1", "area2"],
   "priority": 3,
-  "actions": [{{"type": "read|research|implement|review", "text": "descripcion"}}],
-  "entities": [{{"type": "person|org|concept|tool|place", "value": "nombre"}}],
-  "sources": [{{"kind": "text|url|pdf|audio|image|note", "value": "referencia"}}],
+  "actions": [{{"type": "todo|calendar|read|buy|idea", "text": "descripcion"}}],
+  "entities": [{{"type": "person|org|tool|concept|place", "value": "nombre"}}],
+  "sources": [{{"kind": "url|pdf|note|audio|image", "value": "referencia"}}],
   "confidence": 0.85
 }}
 
