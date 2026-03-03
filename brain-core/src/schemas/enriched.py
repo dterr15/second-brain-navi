@@ -11,7 +11,7 @@ from pydantic import BaseModel, Field, field_validator
 # ---- Enriched Contract sub-schemas ----
 
 class ActionItem(BaseModel):
-    type: str = Field(..., pattern="^(todo|calendar|read|buy|idea)$")
+    type: str = Field(..., min_length=1, max_length=50)
     text: str = Field(..., min_length=1, max_length=300)
 
 class EntityItem(BaseModel):
