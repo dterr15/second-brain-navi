@@ -145,6 +145,6 @@ class SkillLog(Base):
     asset_id = Column(UUID(as_uuid=True), ForeignKey("assets.id", ondelete="CASCADE"), nullable=False)
     executor = Column(Text, nullable=False)
     result = Column(JSONB)
-    estimated_cost = Column(Float)
+    estimated_cost = Column(Float, nullable=False, server_default="0")
     status = Column(Text, nullable=False, default="pending")
     created_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)

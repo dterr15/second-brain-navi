@@ -28,6 +28,9 @@ services:
       SB_DEBUG: "true"
       SB_CORS_ORIGINS: '["http://localhost:3000","http://localhost:5173","http://localhost:8080","http://127.0.0.1:8080"]'
       SB_ENRICHED_SCHEMA_PATH: /app/schemas/enriched_contract.schema.json
+      SB_LLM_PROVIDER: ${SB_LLM_PROVIDER:-anthropic}
+      SB_LLM_MODEL: ${SB_LLM_MODEL:-claude-haiku-4-5}
+      SB_LLM_API_KEY: ${SB_LLM_API_KEY:-}
     ports:
       - "8000:8000"
     depends_on:
@@ -38,6 +41,21 @@ services:
       - ./schemas:/app/schemas
       - ./skills:/app/skills
       - ./storage:/app/storage
+
+  mcp-server:
+    build:
+      context: .
+      dockerfile: mcp-server/Dockerfile
+    environment:
+      SB_MCP_API_BASE: http://brain-core:8000
+      SB_MCP_HOST: 0.0.0.0
+      SB_MCP_PORT: "8001"
+    ports:
+      - "8001:8001"
+    depends_on:
+      - brain-core
+    volumes:
+      - ./mcp-server/server.py:/app/server.py
 
 volumes:
   pgdata:

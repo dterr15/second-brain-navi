@@ -43,6 +43,7 @@ async def execute_skill(
         asset_id=asset_id,
         executor=f"{body.mode}_user",
         result={"note": "Skill execution placeholder - implement skill runner"},
+        estimated_cost=0.0,
         status="pending",
     )
     db.add(log)

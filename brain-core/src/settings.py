@@ -21,6 +21,14 @@ class Settings(BaseSettings):
     # Schema path
     enriched_schema_path: str = "/app/schemas/enriched_contract.schema.json"
 
+    # LLM (auto-process)
+    llm_provider: str = "anthropic"          # anthropic | google | openai
+    llm_model: str = "claude-haiku-4-5"
+    llm_api_key: str = ""
+
+    # MCP Server
+    mcp_port: int = 8001
+
     model_config = {"env_prefix": "SB_", "env_file": ".env"}
 
 

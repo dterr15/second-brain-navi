@@ -164,6 +164,12 @@ class SkillExecuteResponse(BaseModel):
     outcome: Optional[dict] = None
     suggested_patch: Optional[dict] = None
 
+# ---- Auto-process schema ----
+
+class AutoProcessResponse(BaseModel):
+    id: UUID
+    status: str
+
 # ---- Search schemas ----
 
 class SearchRequest(BaseModel):
